@@ -1,0 +1,16 @@
+const fs = require('fs');
+
+const breedDetailsFromFile = function(breed, callback) {
+  console.log('breedDetailsFromFile: Calling readFile...');
+  fs.readFile(`./data/${breed}.txt`, 'utf8', (error, data) => {
+    // Pass data back via callback instead of return
+    console.log('Callback: I have the data!')
+    if (!error) {
+      callback(data);
+    } else {
+      callback(undefined);
+    }
+  });
+}
+
+module.exports = breedDetailsFromFile;
